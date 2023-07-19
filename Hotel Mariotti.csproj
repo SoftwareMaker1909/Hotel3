@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CA944B6D-C5AF-4D88-AF0F-D95E7B4C145D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Hotel_Mariotti</RootNamespace>
+    <AssemblyName>Hotel Mariotti</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CrudClientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrudClientes.Designer.cs">
+      <DependentUpon>CrudClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrudHabitaciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CrudHabitaciones.Designer.cs">
+      <DependentUpon>CrudHabitaciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hotel_MariottiDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Hotel_MariottiDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Hotel_MariottiDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Hotel_MariottiDataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Hotel_MariottiDataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Hotel_MariottiDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Hotel_MariottiDataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Hotel_MariottiDataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Hotel_MariottiDataSet4.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Hotel_MariottiDataSet4.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reserva.Designer.cs">
+      <DependentUpon>Reserva.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CrudClientes.resx">
+      <DependentUpon>CrudClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrudHabitaciones.resx">
+      <DependentUpon>CrudHabitaciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Reserva.resx">
+      <DependentUpon>Reserva.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Hotel_MariottiDataSet.xsc">
+      <DependentUpon>Hotel_MariottiDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Hotel_MariottiDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Hotel_MariottiDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Hotel_MariottiDataSet.xss">
+      <DependentUpon>Hotel_MariottiDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Hotel_MariottiDataSet1.xsc">
+      <DependentUpon>Hotel_MariottiDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Hotel_MariottiDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Hotel_MariottiDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Hotel_MariottiDataSet1.xss">
+      <DependentUpon>Hotel_MariottiDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="Hotel_MariottiDataSet2.xsc">
+      <DependentUpon>Hotel_MariottiDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="Hotel_MariottiDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Hotel_MariottiDataSet2.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Hotel_MariottiDataSet2.xss">
+      <DependentUpon>Hotel_MariottiDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="Hotel_MariottiDataSet3.xsc">
+      <DependentUpon>Hotel_MariottiDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="Hotel_MariottiDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Hotel_MariottiDataSet3.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Hotel_MariottiDataSet3.xss">
+      <DependentUpon>Hotel_MariottiDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="Hotel_MariottiDataSet4.xsc">
+      <DependentUpon>Hotel_MariottiDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="Hotel_MariottiDataSet4.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Hotel_MariottiDataSet4.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Hotel_MariottiDataSet4.xss">
+      <DependentUpon>Hotel_MariottiDataSet4.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
