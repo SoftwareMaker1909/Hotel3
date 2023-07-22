@@ -54,6 +54,7 @@
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.clienteTableAdapter = new Hotel_Mariotti.Hotel_MariottiDataSet2TableAdapters.ClienteTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewCliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.habitacionBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.hotel_MariottiDataSet1)).BeginInit();
@@ -63,9 +64,9 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(21, 276);
+            this.button5.Location = new System.Drawing.Point(26, 289);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(87, 31);
+            this.button5.Size = new System.Drawing.Size(101, 31);
             this.button5.TabIndex = 31;
             this.button5.Text = "Reserva";
             this.button5.UseVisualStyleBackColor = true;
@@ -79,6 +80,7 @@
             this.ActualizarBTN.TabIndex = 29;
             this.ActualizarBTN.Text = "Actualizar";
             this.ActualizarBTN.UseVisualStyleBackColor = true;
+            this.ActualizarBTN.Click += new System.EventHandler(this.ActualizarBTN_Click);
             // 
             // EliminarBTN
             // 
@@ -115,7 +117,7 @@
             this.DataGridViewCliente.Name = "DataGridViewCliente";
             this.DataGridViewCliente.RowHeadersWidth = 51;
             this.DataGridViewCliente.RowTemplate.Height = 24;
-            this.DataGridViewCliente.Size = new System.Drawing.Size(600, 150);
+            this.DataGridViewCliente.Size = new System.Drawing.Size(694, 150);
             this.DataGridViewCliente.TabIndex = 25;
             // 
             // Agregarbtn
@@ -264,11 +266,23 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(26, 326);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(101, 31);
+            this.button2.TabIndex = 52;
+            this.button2.Text = "Habitacion";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // CrudClientes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Hotel_Mariotti.Properties.Resources.Logo_sobre_moda_femenina_minimalista_neutral;
             this.ClientSize = new System.Drawing.Size(944, 474);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.TelefonoTXT);
@@ -288,6 +302,7 @@
             this.Controls.Add(this.BuscarBTN);
             this.Controls.Add(this.DataGridViewCliente);
             this.Controls.Add(this.Agregarbtn);
+            this.DoubleBuffered = true;
             this.Name = "CrudClientes";
             this.Text = "CrudClientes";
             this.Load += new System.EventHandler(this.CrudClientes_Load);
@@ -328,5 +343,6 @@
         private System.Windows.Forms.BindingSource clienteBindingSource;
         private Hotel_MariottiDataSet2TableAdapters.ClienteTableAdapter clienteTableAdapter;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }

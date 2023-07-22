@@ -58,6 +58,13 @@ namespace Hotel_Mariotti
 
         private void AgregarDatosReserva(int nocliente, int nohabitacion, int noreserva, DateTime fechaLlegada, DateTime fechaSalida)
         {
+            // Verificar que los parámetros no sean nulos
+            if (nohabitacion == 0 || noreserva == 0 || fechaLlegada == DateTime.MinValue || fechaSalida == DateTime.MinValue)
+            {
+                MessageBox.Show("Por favor, completa todos los campos.");
+                return;
+            }
+
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -99,9 +106,16 @@ namespace Hotel_Mariotti
             }
         }
 
+
         private void button1_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(TextBoxNocliente.Text, out int nocliente))
+
+            AgregarDatosReserva();
+        }
+
+        private void AgregarDatosReserva()
+        {
+            if (int.TryParse(NumeroClienteCBX.SelectedValue?.ToString(), out int nocliente))
             {
                 int nohabitacion = Convert.ToInt32(NoHabitacionCBX.SelectedValue);
                 int noreserva = Convert.ToInt32(NoReservaUPDOWN.Value);
@@ -113,7 +127,7 @@ namespace Hotel_Mariotti
             }
             else
             {
-                MessageBox.Show("Por favor, ingresa un valor válido para el Nocliente.");
+                MessageBox.Show("Por favor, selecciona un valor válido para el Nocliente.");
             }
         }
 
@@ -149,12 +163,64 @@ namespace Hotel_Mariotti
         {
             CargarHabitacionesDisponibles();
             CargarDatos();
+            CargarNumeroClienteDisponibles();
+        }
+        private void CargarNumeroClienteDisponibles()
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Consulta para obtener los clientes que no tienen datos en la columna NoHabitacion
+                    string query = "SELECT Nocliente FROM Cliente WHERE NoHabitacion IS NULL";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+
+                            // Asignar el DataTable como origen de datos del ComboBox
+                            NumeroClienteCBX.DataSource = dataTable;
+                            NumeroClienteCBX.DisplayMember = "Nocliente";
+                            NumeroClienteCBX.ValueMember = "Nocliente";
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los números de cliente disponibles: " + ex.Message);
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             CargarHabitacionesDisponibles();
             CargarDatos(); 
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // Crear una instancia del formulario que deseas abrir
+            CrudClientes formulario = new CrudClientes();
+
+            // Mostrar el formulario
+            formulario.Show();
+            this.Hide();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            CrudHabitaciones formulario2 = new CrudHabitaciones();
+
+            // Mostrar el formulario
+            formulario2.Show();
+            this.Close();
+
         }
     }
 

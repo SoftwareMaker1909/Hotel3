@@ -37,10 +37,12 @@
             this.EntradaDTP = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.TextBoxNocliente = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.DataGridViewCliente = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.NumeroClienteCBX = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.NoReservaUPDOWN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewCliente)).BeginInit();
             this.SuspendLayout();
@@ -120,13 +122,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // TextBoxNocliente
-            // 
-            this.TextBoxNocliente.Location = new System.Drawing.Point(308, 138);
-            this.TextBoxNocliente.Name = "TextBoxNocliente";
-            this.TextBoxNocliente.Size = new System.Drawing.Size(100, 22);
-            this.TextBoxNocliente.TabIndex = 60;
-            // 
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(611, 130);
@@ -140,11 +135,11 @@
             // DataGridViewCliente
             // 
             this.DataGridViewCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DataGridViewCliente.Location = new System.Drawing.Point(114, 187);
+            this.DataGridViewCliente.Location = new System.Drawing.Point(122, 217);
             this.DataGridViewCliente.Name = "DataGridViewCliente";
             this.DataGridViewCliente.RowHeadersWidth = 51;
             this.DataGridViewCliente.RowTemplate.Height = 24;
-            this.DataGridViewCliente.Size = new System.Drawing.Size(603, 215);
+            this.DataGridViewCliente.Size = new System.Drawing.Size(616, 208);
             this.DataGridViewCliente.TabIndex = 62;
             // 
             // label2
@@ -156,15 +151,46 @@
             this.label2.TabIndex = 63;
             this.label2.Text = "No.CLiente";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(7, 281);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(101, 31);
+            this.button3.TabIndex = 65;
+            this.button3.Text = "Habitacion";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(7, 244);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(101, 31);
+            this.button5.TabIndex = 64;
+            this.button5.Text = "Cliente";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // NumeroClienteCBX
+            // 
+            this.NumeroClienteCBX.FormattingEnabled = true;
+            this.NumeroClienteCBX.Location = new System.Drawing.Point(301, 138);
+            this.NumeroClienteCBX.Name = "NumeroClienteCBX";
+            this.NumeroClienteCBX.Size = new System.Drawing.Size(121, 24);
+            this.NumeroClienteCBX.TabIndex = 66;
+            // 
             // Reserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Hotel_Mariotti.Properties.Resources.Logo_sobre_moda_femenina_minimalista_neutral;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.NumeroClienteCBX);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.DataGridViewCliente);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.TextBoxNocliente);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.NoHabitacionCBX);
             this.Controls.Add(this.label9);
@@ -195,9 +221,11 @@
         private System.Windows.Forms.DateTimePicker EntradaDTP;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox TextBoxNocliente;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridView DataGridViewCliente;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ComboBox NumeroClienteCBX;
     }
 }

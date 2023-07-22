@@ -38,7 +38,8 @@ namespace Hotel_Mariotti
         {
             // TODO: esta línea de código carga datos en la tabla 'hotel_MariottiDataSet.Habitacion' Puede moverla o quitarla según sea necesario.
             this.habitacionTableAdapter.Fill(this.hotel_MariottiDataSet.Habitacion);
-            
+            CargarDatos();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -63,6 +64,8 @@ namespace Hotel_Mariotti
                             command.ExecuteNonQuery();
 
                             MessageBox.Show("Registro agregado exitosamente.");
+                            CargarDatos();
+
                         }
                     }
                 }
@@ -75,7 +78,11 @@ namespace Hotel_Mariotti
 
         private void button2_Click(object sender, EventArgs e)
         {
-            int numeroHabitacion = int.Parse(NumeroHabitacionTXT.Text);
+            Buscar();
+        }
+        private void Buscar()
+        {
+            string nombreApellido = NumeroHabitacionTXT.Text.Trim();
 
             try
             {
@@ -87,21 +94,19 @@ namespace Hotel_Mariotti
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        command.Parameters.AddWithValue("@NumeroHabitacion", numeroHabitacion);
+                        command.Parameters.AddWithValue("@NumeroHabitacion", nombreApellido);
 
                         using (SqlDataAdapter adapter = new SqlDataAdapter(command))
                         {
                             habitacionDataTable.Clear();
                             adapter.Fill(habitacionDataTable);
 
-                            if (habitacionDataTable.Rows.Count > 0)
+                            // Establecer el DataTable como origen de datos del DataGridView
+                            habitacionesDataGridView.DataSource = habitacionDataTable;
+
+                            if (habitacionDataTable.Rows.Count == 0)
                             {
-                                // Si se encuentra el registro, se actualiza el DataGridView
-                                habitacionesDataGridView.Refresh();
-                            }
-                            else
-                            {
-                                // Si no se encuentra el registro, se muestra un mensaje
+                                // Si no se encuentran registros, se muestra un mensaje
                                 MessageBox.Show("No se encontraron habitaciones con el número especificado.");
                             }
                         }
@@ -116,6 +121,18 @@ namespace Hotel_Mariotti
 
         private void button3_Click(object sender, EventArgs e)
         {
+            Eliminar();
+        }
+
+        private void Eliminar()
+        {
+            // Verificar si el campo de entrada está vacío
+            if (string.IsNullOrEmpty(NumeroHabitacionTXT.Text))
+            {
+                MessageBox.Show("Por favor, escriba el numero de habitacion que desee eliminar");
+                return;
+            }
+
             int numeroHabitacion = int.Parse(NumeroHabitacionTXT.Text);
 
             try
@@ -135,6 +152,7 @@ namespace Hotel_Mariotti
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Habitación eliminada exitosamente.");
+                            CargarDatos();
                         }
                         else
                         {
@@ -151,6 +169,34 @@ namespace Hotel_Mariotti
 
         private void button4_Click(object sender, EventArgs e)
         {
+            Actualizar();
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            // Crear una instancia del formulario que deseas abrir
+            CrudClientes formulario = new CrudClientes();
+
+            // Mostrar el formulario
+            formulario.Show();
+            this.Hide();
+        }
+
+        private void habitacionesDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Actualizar()
+        {
+            // Verificar si los campos de entrada están vacíos
+            if (string.IsNullOrEmpty(TipoUpDown1.Text) || string.IsNullOrEmpty(PrecioTXT.Text) || string.IsNullOrEmpty(NumeroHabitacionTXT.Text))
+            {
+                MessageBox.Show("Por favor, llene todos los campos para actualizar la habitación.");
+                return;
+            }
+
             int numeroHabitacion = int.Parse(NumeroHabitacionTXT.Text);
             int tipoHabitacion = (int)TipoUpDown1.Value;
             decimal precio = decimal.Parse(PrecioTXT.Text);
@@ -174,6 +220,7 @@ namespace Hotel_Mariotti
                         if (rowsAffected > 0)
                         {
                             MessageBox.Show("Registro actualizado exitosamente.");
+                            CargarDatos();
                         }
                         else
                         {
@@ -188,15 +235,37 @@ namespace Hotel_Mariotti
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void CargarDatos()
         {
-            // Crear una instancia del formulario que deseas abrir
-            CrudClientes formulario = new CrudClientes();
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
 
-            // Mostrar el formulario
-            formulario.Show();
+                    string query = "SELECT * FROM Habitacion";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            DataTable dataTable = new DataTable();
+                            adapter.Fill(dataTable);
+
+                            // Asignar el DataTable como origen de datos del DataGridView
+                            habitacionesDataGridView.DataSource = dataTable;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los datos: " + ex.Message);
+            }
         }
 
-
+        private void button6_Click(object sender, EventArgs e)
+        {
+        }
     }
+
 }

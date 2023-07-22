@@ -38,61 +38,61 @@ namespace Hotel_Mariotti
 
         private void Agregarbtn_Click(object sender, EventArgs e)
         {
+            Agregar();
+        }
+
+        private void Agregar()
+        {
+            string nombre = NombreTXT.Text.Trim();
+            string apellido = ApellidoTXT.Text.Trim();
+            string direccion = DireccionTXT.Text.Trim();
+            string telefono = TelefonoTXT.Text.Trim();
+            string sexo = SexoCBX.SelectedItem?.ToString();
+
+            // Verificar que todos los campos estén llenos
+            if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(apellido) ||
+                string.IsNullOrEmpty(direccion) || string.IsNullOrEmpty(telefono) || string.IsNullOrEmpty(sexo))
             {
-                string nombre = NombreTXT.Text;
-                string apellido = ApellidoTXT.Text;
-                string direccion = DireccionTXT.Text;
-                string telefono = TelefonoTXT.Text;
-                string sexo = SexoCBX.SelectedItem.ToString();
-               
+                MessageBox.Show("Por favor, completa todos los campos.");
+                return;
+            }
 
-                try
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
                 {
-                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    connection.Open();
+
+                    string query = "INSERT INTO Cliente (Nombre, Apellido, Direccion, Telefono, Sexo) " +
+                                   "VALUES (@Nombre, @Apellido, @Direccion, @Telefono, @Sexo)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
                     {
-                        connection.Open();
+                        command.Parameters.AddWithValue("@Nombre", nombre);
+                        command.Parameters.AddWithValue("@Apellido", apellido);
+                        command.Parameters.AddWithValue("@Direccion", direccion);
+                        command.Parameters.AddWithValue("@Telefono", telefono);
+                        command.Parameters.AddWithValue("@Sexo", sexo);
 
+                        int rowsAffected = command.ExecuteNonQuery();
 
-
-                        string query = "INSERT INTO Cliente (Nombre, Apellido, Direccion, Telefono, Sexo) " +
-                            "VALUES (@Nombre, @Apellido, @Direccion, @Telefono, @Sexo)";
-
-                        using (SqlCommand command = new SqlCommand(query, connection))
+                        if (rowsAffected > 0)
                         {
-                            command.Parameters.AddWithValue("@Nombre", nombre);
-                            command.Parameters.AddWithValue("@Apellido", apellido);
-                            command.Parameters.AddWithValue("@Direccion", direccion);
-                            command.Parameters.AddWithValue("@Telefono", telefono);
-                            command.Parameters.AddWithValue("@Sexo", sexo);
-                          
-
-                            int rowsAffected = command.ExecuteNonQuery();
-
-                            if (rowsAffected > 0)
-                            {
-                                MessageBox.Show("Registro agregado exitosamente.");
-
-
-                            }
-                            else
-                            {
-                                MessageBox.Show("No se pudo agregar el registro.");
-                            }
+                            MessageBox.Show("Registro agregado exitosamente.");
+                        }
+                        else
+                        {
+                            MessageBox.Show("No se pudo agregar el registro.");
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al agregar el registro: " + ex.Message);
-                }
             }
-      
-        
-        
-        
-        
-        
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al agregar el registro: " + ex.Message);
+            }
         }
+
         private void CargarDatos()
         {
             try
@@ -196,8 +196,7 @@ namespace Hotel_Mariotti
 
         private void Buscar()
         {
-            string nombreApellido = BuscarBTN.Text.Trim();
-
+            string nombreApellido = ClienteTXT.Text.Trim();
             if (!string.IsNullOrEmpty(nombreApellido))
             {
                 try
@@ -240,6 +239,89 @@ namespace Hotel_Mariotti
 
             // Mostrar el formulario
             formulario2.Show();
+            this.Hide();
+        }
+
+        private void ActualizarCliente()
+        {
+            // Verificar si se ha seleccionado una fila en el DataGridView
+            if (DataGridViewCliente.SelectedRows.Count > 0)
+            {
+                // Obtener la fila seleccionada
+                DataGridViewRow filaSeleccionada = DataGridViewCliente.SelectedRows[0];
+
+                // Obtener el valor del Nocliente desde la fila seleccionada
+                if (int.TryParse(filaSeleccionada.Cells["Nocliente"].Value.ToString(), out int nocliente))
+                {
+                    // Obtener los nuevos valores para actualizar los datos personales del cliente
+                    string nuevoNombre = NombreTXT.Text.Trim();
+                    string nuevoApellido = ApellidoTXT.Text.Trim();
+                    string nuevaDireccion = DireccionTXT.Text.Trim();
+                    string nuevoTelefono = TelefonoTXT.Text.Trim();
+                    string nuevoSexo = SexoCBX.SelectedItem.ToString();
+
+                    try
+                    {
+                        using (SqlConnection connection = new SqlConnection(connectionString))
+                        {
+                            connection.Open();
+
+                            string query = "UPDATE Cliente SET Nombre = @Nombre, Apellido = @Apellido, Direccion = @Direccion, Telefono = @Telefono, Sexo = @Sexo " +
+                                           "WHERE Nocliente = @Nocliente";
+
+                            using (SqlCommand command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@Nocliente", nocliente);
+                                command.Parameters.AddWithValue("@Nombre", nuevoNombre);
+                                command.Parameters.AddWithValue("@Apellido", nuevoApellido);
+                                command.Parameters.AddWithValue("@Direccion", nuevaDireccion);
+                                command.Parameters.AddWithValue("@Telefono", nuevoTelefono);
+                                command.Parameters.AddWithValue("@Sexo", nuevoSexo);
+
+                                int rowsAffected = command.ExecuteNonQuery();
+
+                                if (rowsAffected > 0)
+                                {
+                                    MessageBox.Show("Información del cliente actualizada correctamente.");
+                                    // Actualizar el DataGridView con los nuevos datos
+                                    CargarDatos();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No se pudo actualizar la información del cliente.");
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error al actualizar la información del cliente: " + ex.Message);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo obtener el Nocliente del cliente seleccionado.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Por favor, seleccione un cliente para actualizar.");
+            }
+        }
+
+        private void ActualizarBTN_Click(object sender, EventArgs e)
+        {
+            ActualizarCliente();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CrudHabitaciones formulario2 = new CrudHabitaciones();
+
+            // Mostrar el formulario
+            formulario2.Show();
+            this.Close();
+
         }
     }
 
