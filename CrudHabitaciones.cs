@@ -14,14 +14,14 @@ namespace Hotel_Mariotti
     public partial class CrudHabitaciones : Form
     {
 
-        private const string connectionString = "Data Source=ThekillerCode;Initial Catalog=Hotel_Mariotti;Integrated Security=True";
+        private const string connectionString = "Data Source=Terminales;Initial Catalog=Hotel_Mariotti;Integrated Security=True";
         private DataTable habitacionDataTable;
 
         public CrudHabitaciones()
         {
             InitializeComponent();
             habitacionDataTable = new DataTable();
-            habitacionesDataGridView.DataSource = habitacionDataTable;
+            habitacionesDataGridView.DataSource = habitacionDataTable; 
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -37,7 +37,7 @@ namespace Hotel_Mariotti
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'hotel_MariottiDataSet.Habitacion' Puede moverla o quitarla según sea necesario.
-            this.habitacionTableAdapter.Fill(this.hotel_MariottiDataSet.Habitacion);
+            //this.habitacionTableAdapter.Fill(this.hotel_MariottiDataSet.Habitacion);
             CargarDatos();
 
         }

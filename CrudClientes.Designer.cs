@@ -40,8 +40,6 @@
             this.NombreTXT = new System.Windows.Forms.TextBox();
             this.ApellidoTXT = new System.Windows.Forms.TextBox();
             this.habitacionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.hotel_MariottiDataSet1 = new Hotel_Mariotti.Hotel_MariottiDataSet1();
-            this.habitacionTableAdapter = new Hotel_Mariotti.Hotel_MariottiDataSet1TableAdapters.HabitacionTableAdapter();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.SexoCBX = new System.Windows.Forms.ComboBox();
@@ -50,15 +48,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.TelefonoTXT = new System.Windows.Forms.TextBox();
-            this.hotel_MariottiDataSet2 = new Hotel_Mariotti.Hotel_MariottiDataSet2();
             this.clienteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.clienteTableAdapter = new Hotel_Mariotti.Hotel_MariottiDataSet2TableAdapters.ClienteTableAdapter();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewCliente)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.habitacionBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hotel_MariottiDataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hotel_MariottiDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -158,17 +152,16 @@
             // 
             // habitacionBindingSource
             // 
-            this.habitacionBindingSource.DataMember = "Habitacion";
-            this.habitacionBindingSource.DataSource = this.hotel_MariottiDataSet1;
+            this.habitacionBindingSource.DataMember = "Habitacion";          
             // 
             // hotel_MariottiDataSet1
             // 
-            this.hotel_MariottiDataSet1.DataSetName = "Hotel_MariottiDataSet1";
-            this.hotel_MariottiDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            //this.hotel_MariottiDataSet1.DataSetName = "Hotel_MariottiDataSet1";
+            //this.hotel_MariottiDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // habitacionTableAdapter
             // 
-            this.habitacionTableAdapter.ClearBeforeFill = true;
+            //this.habitacionTableAdapter.ClearBeforeFill = true;
             // 
             // label2
             // 
@@ -244,17 +237,17 @@
             // 
             // hotel_MariottiDataSet2
             // 
-            this.hotel_MariottiDataSet2.DataSetName = "Hotel_MariottiDataSet2";
-            this.hotel_MariottiDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            //this.hotel_MariottiDataSet2.DataSetName = "Hotel_MariottiDataSet2";
+            //this.hotel_MariottiDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // clienteBindingSource
             // 
-            this.clienteBindingSource.DataMember = "Cliente";
-            this.clienteBindingSource.DataSource = this.hotel_MariottiDataSet2;
+            //this.clienteBindingSource.DataMember = "Cliente";
+            //this.clienteBindingSource.DataSource = this.hotel_MariottiDataSet2;
             // 
             // clienteTableAdapter
             // 
-            this.clienteTableAdapter.ClearBeforeFill = true;
+            //this.clienteTableAdapter.ClearBeforeFill = true;
             // 
             // button1
             // 
@@ -308,8 +301,8 @@
             this.Load += new System.EventHandler(this.CrudClientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewCliente)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.habitacionBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hotel_MariottiDataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hotel_MariottiDataSet2)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.hotel_MariottiDataSet1)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.hotel_MariottiDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clienteBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -328,9 +321,7 @@
         private System.Windows.Forms.Label NoHabitacion;
         private System.Windows.Forms.TextBox NombreTXT;
         private System.Windows.Forms.TextBox ApellidoTXT;
-        private Hotel_MariottiDataSet1 hotel_MariottiDataSet1;
-        private System.Windows.Forms.BindingSource habitacionBindingSource;
-        private Hotel_MariottiDataSet1TableAdapters.HabitacionTableAdapter habitacionTableAdapter;
+        private System.Windows.Forms.BindingSource habitacionBindingSource; 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox SexoCBX;
@@ -338,10 +329,8 @@
         private System.Windows.Forms.TextBox DireccionTXT;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox TelefonoTXT;
-        private Hotel_MariottiDataSet2 hotel_MariottiDataSet2;
-        private System.Windows.Forms.BindingSource clienteBindingSource;
-        private Hotel_MariottiDataSet2TableAdapters.ClienteTableAdapter clienteTableAdapter;
+        private System.Windows.Forms.TextBox TelefonoTXT;       
+        private System.Windows.Forms.BindingSource clienteBindingSource;        
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
     }

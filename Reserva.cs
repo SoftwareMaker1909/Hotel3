@@ -13,7 +13,7 @@ namespace Hotel_Mariotti
 {
     public partial class Reserva : Form
     {
-        private const string connectionString = "Data Source=ThekillerCode;Initial Catalog=Hotel_Mariotti;Integrated Security=True";
+        private const string connectionString = "Data Source=Terminales;Initial Catalog=Hotel_Mariotti;Integrated Security=True";
 
         public Reserva()
         {

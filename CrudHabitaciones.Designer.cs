@@ -42,8 +42,8 @@
             this.tipohabitacionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.habitacionBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.hotel_MariottiDataSet = new Hotel_Mariotti.Hotel_MariottiDataSet();
-            this.habitacionTableAdapter = new Hotel_Mariotti.Hotel_MariottiDataSetTableAdapters.HabitacionTableAdapter();
+            //this.hotel_MariottiDataSet = new Hotel_Mariotti.Hotel_MariottiDataSet();
+            //this.habitacionTableAdapter = new Hotel_Mariotti.Hotel_MariottiDataSetTableAdapters.HabitacionTableAdapter();
             this.button2 = new System.Windows.Forms.Button();
             this.NumeroHabitacionTXT = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
@@ -54,7 +54,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TipoUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.habitacionesDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.habitacionBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hotel_MariottiDataSet)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize)(this.hotel_MariottiDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -174,16 +174,16 @@
             // habitacionBindingSource
             // 
             this.habitacionBindingSource.DataMember = "Habitacion";
-            this.habitacionBindingSource.DataSource = this.hotel_MariottiDataSet;
+           // this.habitacionBindingSource.DataSource = this.hotel_MariottiDataSet;
             // 
             // hotel_MariottiDataSet
             // 
-            this.hotel_MariottiDataSet.DataSetName = "Hotel_MariottiDataSet";
-            this.hotel_MariottiDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            //this.hotel_MariottiDataSet.DataSetName = "Hotel_MariottiDataSet";
+            //this.hotel_MariottiDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // habitacionTableAdapter
             // 
-            this.habitacionTableAdapter.ClearBeforeFill = true;
+            //this.habitacionTableAdapter.ClearBeforeFill = true;
             // 
             // button2
             // 
@@ -280,7 +280,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.TipoUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.habitacionesDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.habitacionBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.hotel_MariottiDataSet)).EndInit();
+            //((System.ComponentModel.ISupportInitialize)(this.hotel_MariottiDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -296,9 +296,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridView habitacionesDataGridView;
-        private Hotel_MariottiDataSet hotel_MariottiDataSet;
         private System.Windows.Forms.BindingSource habitacionBindingSource;
-        private Hotel_MariottiDataSetTableAdapters.HabitacionTableAdapter habitacionTableAdapter;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox NumeroHabitacionTXT;
         private System.Windows.Forms.DataGridViewTextBoxColumn noHabitacionDataGridViewTextBoxColumn;

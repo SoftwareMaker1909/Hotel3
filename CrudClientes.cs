@@ -13,7 +13,7 @@ namespace Hotel_Mariotti
 {
     public partial class CrudClientes : Form
     {
-        private const string connectionString = "Data Source=ThekillerCode;Initial Catalog=Hotel_Mariotti;Integrated Security=True";
+        private const string connectionString = "Data Source=Terminales;Initial Catalog=Hotel_Mariotti;Integrated Security=True";
 
         public CrudClientes()
         {
@@ -25,9 +25,9 @@ namespace Hotel_Mariotti
         private void CrudClientes_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'hotel_MariottiDataSet2.Cliente' Puede moverla o quitarla según sea necesario.
-            this.clienteTableAdapter.Fill(this.hotel_MariottiDataSet2.Cliente);
+            //this.clienteTableAdapter.Fill(this.hotel_MariottiDataSet2.Cliente);
             // TODO: esta línea de código carga datos en la tabla 'hotel_MariottiDataSet1.Habitacion' Puede moverla o quitarla según sea necesario.
-            this.habitacionTableAdapter.Fill(this.hotel_MariottiDataSet1.Habitacion);
+            //this.habitacionTableAdapter.Fill(this.hotel_MariottiDataSet1.Habitacion);
             CargarDatos();
         }
 
